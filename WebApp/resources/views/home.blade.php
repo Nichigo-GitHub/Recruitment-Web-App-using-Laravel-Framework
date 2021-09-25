@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <div class="d-flex">
                         <div class="col-2 pt-3"><img src="https://lh3.googleusercontent.com/a-/AOh14Gg9J9Bs9rBOsUSGgZLCo2JImpmE1-6OC1zZXq7OKw=s576-p-rw-no" class="rounded-circle" style="height: 70px;"></div>
-                        <div class="pt-3 pl-2"><h1>Neil Christian Go</h1>
+                        <div class="pt-3 pl-2"><h1>{{$user->name}}</h1>
                             <div class="d-flex">
                                 <div class="pr-3"><strong>153</strong> Total Jobs Done</div>
                                 <div class="pr-3"><strong>23k</strong> Total Earnings</div>
@@ -25,11 +25,10 @@
                             <div>API, Python, SQL, PHP, HTML, Java, JavaScript, Kotlin, C++, Laravel</div>
                             <br>
                             <div class="pb-2" style="font-weight: bold;">Availability</div>
-                            <div>More than 30 hrs/week</div>
+                            <div>{{$user->profile->availability}} hrs/week</div>
                             <br>
                             <div class="pb-2" style="font-weight: bold;">Languages</div>
-                            <div><strong>English:</strong> Fluent</div>
-                            <div><strong>Tagalog:</strong> Fluent</div>
+                            <div>{{$user->profile->languages}}</div>
                             <br>
                             <div class="pb-2" style="font-weight: bold;">Education</div>
                             <div><strong>NU Laguna</strong></div>
@@ -39,8 +38,8 @@
                         <div style="border-right:1px solid #d3d3d3;"></div>
                         <div class="col-9 flex-column">                            
                             <div >                        
-                                <div class="pb-2" style="font-weight: bold;">Web, Mobile & Software Developer</div>
-                                <div>I'm a Computer Science major seeking to leverage my experience in Kotlin, Javascript, C++, and APIs into a role as a Full Stack Developer. A highly motivated programmer who is passionate about the future of computer technology and engineering.</div>
+                                <div class="pb-2" style="font-weight: bold;">{{$user->profile->title}}</div>
+                                <div>{{$user->profile->description}}</div>
                                 <div class="pt-3" style="border-bottom:1px solid #d3d3d3;"></div>
                             </div>                               
                             <div class="pt-3">                        
@@ -79,7 +78,7 @@
             </div>
             <br>
             <div class="card">
-                <div class="col-12 pt-3">                        
+                <div class="col-12 pt-3 pl-4">                        
                     <div class="pb-2" style="font-weight: bold;">Employment history</div>
                     <div><strong>Full Stack Developer | OCD Culture</strong></div>
                     <div class="pb-3">August 2020 - January 2021</div>
