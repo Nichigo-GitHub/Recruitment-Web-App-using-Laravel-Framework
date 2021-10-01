@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Notifications\TwoFactorCode;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -36,5 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        $user->generateTwoFactorCode();
+        $user->notify(new TwoFactorCode());
+    }
+
+    public function generateTwoFactorCode()
+    {
+        $this->timestamps = false;
+        $this->two_factor_code = rand(100000, 999999);
+        $this->two_factor_expires_at = now()->addMinutes(10);
+        $this->save();
     }
 }
