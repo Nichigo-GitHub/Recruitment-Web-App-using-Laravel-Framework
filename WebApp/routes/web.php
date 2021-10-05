@@ -23,22 +23,20 @@ Route::view('/home', 'home');
 
 Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor');
 
-Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 
-Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'update'])->middleware('auth');
+Route::get('/profile/{user}/edit', 'ProfilesController@update')->middleware('auth');
+
+Route::get('/portfolio/create', 'PostsController@create');
+
+Route::post('/portfolio', 'PostsController@store');
 
 Route::group([
-    'prefix' => 'admin', 
-    'as' => 'admin.', 
-    'namespace' => 'Admin', 
     'middleware' => ['auth', 'twofactor']
 ], function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('permissions', 'PermissionsController');
-    Route::resource('roles', 'RolesController');
-    Route::resource('users', 'UsersController');
 });
 
-Route::get('verify/resend', 'App\Http\Controllers\Auth\TwoFactorController@resend')->name('verify.resend');
+Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
 
-Route::resource('verify', 'App\Http\Controllers\Auth\TwoFactorController')->only(['index', 'store']);
+Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);

@@ -57,22 +57,33 @@
                         </div>                    
                     </div>
                     <div style="border-top:1px solid #d3d3d3;"></div>
-                    <div class="col-12 pt-3">                        
-                        <div class="pb-2" style="font-weight: bold;">Portfolio (3)</div>
-                        <div class="d-flex">
-                            <div class="flex-column">
-                                <div class="col-4"><img src="https://www.upwork.com/att/download/portfolio/persons/uid/1347099708579033088/profile/projects/files/187aec6a-380a-4a72-8b8c-f62b3f373d5f" style="max-width: 500%; height: auto; border: 1px solid #d3d3d3;"></div>
-                                <div class="pl-3"><a href="#">Online Food Ordering System</a></div>
-                            </div>
-                            <div class="flex-column">
-                                <div class="col-4"><img src="https://www.upwork.com/att/download/portfolio/persons/uid/1347099708579033088/profile/projects/files/6706b770-337d-417d-a440-4c0bbe366cc6" style="max-width: 500%; height: auto; border: 1px solid #d3d3d3;"></div>
-                                <div class="pl-3"><a href="#">Reactjs Dashboard For Ecommerce website</a></div>
-                            </div>
-                            <div class="flex-column">
-                                <div class="col-4"><img src="https://www.upwork.com/att/download/portfolio/persons/uid/1347099708579033088/profile/projects/files/696ddf76-93a4-4e89-a474-3352eba8631a" style="max-width: 500%; height: auto; border: 1px solid #d3d3d3;"></div>
-                                <div class="pl-3"><a href="#">Online Scrap Selling website</a></div>
-                            </div>
-                        </div>
+                    <div class="col-12 pt-3">         
+                        <div class="d-flex" style="justify-content: space-between;">               
+                            <div class="pb-2" style="font-weight: bold;">Portfolio ({{ $user->posts->count() }})</div>                            
+                            <a href="/portfolio/create">Add New Portfolio</a>
+                        </div>                        
+                            @foreach($user->posts as $post)
+                                @if ($loop->first)
+                                    <div class="d-flex">                                  
+                                @endif
+                               
+                                <div class="flex-column">
+                                    <div class="col-4"><img src="/storage/{{ $post->image }}" style="max-width: 500%; height: auto; border: 1px solid #d3d3d3;"></div>
+                                    <div class="pl-3"><a href="#">{{ $post->title }}</a></div>
+                                </div>
+
+                                @if ($loop->iteration%3 == 0 && $loop->last)
+                                    
+                                @elseif ($loop->iteration%3 == 0)
+                                    </div>
+                                    <br>
+                                    <div class="d-flex">
+                                @endif
+
+                                @if ($loop->last)
+                                    </div>
+                                @endif
+                            @endforeach  
                     </div>                   
                 </div>                                
             </div>
