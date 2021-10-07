@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::view('/home', 'home');
 
-Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor');
+Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor', 'auth');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 
@@ -30,12 +30,6 @@ Route::get('/profile/{user}/edit', 'ProfilesController@update')->middleware('aut
 Route::get('/portfolio/create', 'PostsController@create');
 
 Route::post('/portfolio', 'PostsController@store');
-
-Route::group([
-    'middleware' => ['auth', 'twofactor']
-], function () {
-    Route::get('/', 'HomeController@index')->name('home');
-});
 
 Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
 

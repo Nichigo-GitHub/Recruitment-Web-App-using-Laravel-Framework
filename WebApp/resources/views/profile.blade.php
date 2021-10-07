@@ -62,28 +62,28 @@
                             <div class="pb-2" style="font-weight: bold;">Portfolio ({{ $user->posts->count() }})</div>                            
                             <a href="/portfolio/create">Add New Portfolio</a>
                         </div>                        
-                            @foreach($user->posts as $post)
-                                @if ($loop->first)
-                                    <div class="d-flex">                                  
-                                @endif
-                               
-                                <div class="flex-column">
-                                    <div class="col-4"><img src="/storage/{{ $post->image }}" style="max-width: 500%; height: auto; border: 1px solid #d3d3d3;"></div>
-                                    <div class="pl-3"><a href="#">{{ $post->title }}</a></div>
+                        @foreach($user->posts as $post)
+                            @if ($loop->first)
+                                <div class="d-flex" style="justify-content: space-between;">                                  
+                            @endif
+                            
+                            <div class="flex-column">
+                                <div class="col-12"><img src="/storage/{{ $post->image }}" style="max-width: 100%; height: auto; border: 1px solid #d3d3d3;"></div>
+                                <div class="col-12" style="text-align: center;"><a href="#">{{ $post->title }}</a></div>
+                            </div>
+
+                            @if ($loop->iteration%3 == 0 && $loop->last)
+                                
+                            @elseif ($loop->iteration%3 == 0)
                                 </div>
+                                <br>
+                                <div class="d-flex">
+                            @endif
 
-                                @if ($loop->iteration%3 == 0 && $loop->last)
-                                    
-                                @elseif ($loop->iteration%3 == 0)
-                                    </div>
-                                    <br>
-                                    <div class="d-flex">
-                                @endif
-
-                                @if ($loop->last)
-                                    </div>
-                                @endif
-                            @endforeach  
+                            @if ($loop->last)
+                                </div>
+                            @endif
+                        @endforeach  
                     </div>                   
                 </div>                                
             </div>
