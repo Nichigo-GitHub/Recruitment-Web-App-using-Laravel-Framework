@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="sticky navbar navbar-expand-md navbar-light bg-white shadow-sm" style="position: fixed; width: 100%; z-index: 1;">
             <div class="container">
                 <a class="navbar-brand d-flex" href="{{ url('/') }}">
                     <div><img src="/svg/image2vector.svg" style="height: 20px; border-right: 1px solid #000000;" class="pr-3"></div>
@@ -60,13 +60,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/profile/{{Auth::user()->id}}"
+                                    <a class="dropdown-item" href="/resume/{{Auth::user()->id}}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('profile-form').submit();">
-                                        {{ __('View Profile') }}
+                                        {{ __('View Resume') }}
                                     </a>
 
-                                    <form id="profile-form" action="/profile/{{Auth::user()->id}}" method="GET" class="d-none">
+                                    <form id="profile-form" action="/resume/{{Auth::user()->id}}" method="GET" class="d-none">
                                         @csrf
                                     </form>
 
@@ -91,5 +91,11 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var nav = document.querySelector("nav");
+            nav.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
 </body>
 </html>

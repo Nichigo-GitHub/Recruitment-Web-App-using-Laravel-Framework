@@ -21,16 +21,24 @@ Auth::routes();
 
 Route::view('/home', 'home');
 
-Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor', 'auth');
-
-Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
-
-Route::get('/profile/{user}/edit', 'ProfilesController@update')->middleware('auth');
-
-Route::get('/portfolio/create', 'PostsController@create');
-
-Route::post('/portfolio', 'PostsController@store');
+Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
 
 Route::get('verify/resend', 'Auth\TwoFactorController@resend')->name('verify.resend');
 
-Route::resource('verify', 'Auth\TwoFactorController')->only(['index', 'store']);
+Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor', 'auth');
+
+Route::get('/resume/{user}', 'ProfilesController@index')->name('profile.show');
+
+Route::get('/resume/{user}/edit', 'ProfilesController@update')->middleware('auth');
+
+Route::post('/resume/portfolio', 'PostsController@store');
+
+Route::get('/resume/{user}/portfolio/create', 'PostsController@create')->middleware('auth');
+
+Route::get('/resume/{user}/portfolio/{post}/update', 'PostsController@update')->middleware('auth');
+
+Route::post('/resume/portfolio/{post}/updated', 'PostsController@updated')->middleware('auth');
+
+Route::get('/resume/{user}/portfolio/{post}', 'PostsController@show');
+
+Route::get('/resume/portfolio/{post}/delete', 'PostsController@delete')->middleware('auth');

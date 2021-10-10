@@ -57,17 +57,17 @@
                 </div>
                 <div class="flex-column col-9 pl-5"> 
                     <div class="card">
-                        <div class="card-header"><strong>{{ __('Showcase Your Work') }}</strong></div>
+                        <div class="card-header"><strong>{{ __('Update Your Portfolio') }}</strong></div>
 
                         <div class="card-body">
-                            <form class="pb-4" method="POST" action="/resume/portfolio" enctype="multipart/form-data">
+                            <form class="pb-4" method="POST" action="/resume/portfolio/{{ $post->id }}/updated" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group row">
-                                    <label for="title" class="col-md-5 col-form-label text-md-right">{{ __('Add Title of your Portoflio') }}</label>
+                                    <label for="title" class="col-md-5 col-form-label text-md-right">{{ __('Update Title of your Portoflio') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                                        <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $post->title }}" autocomplete="title" autofocus>
 
                                         @error('title')
                                             <span class="invalid-feedback" role="alert">
@@ -78,20 +78,20 @@
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <label class="col-md-5 col-form-label text-md-right">{{ __('Add Image to your Portoflio') }}</label>
+                                    <label class="col-md-5 col-form-label text-md-right">{{ __('Update Image of your Portoflio') }}</label>
 
                                     <div class="col-md-6">
                                         <label class="col-form-label pl-3">{{ __('*Image will be Cropped to 4:3 Ratio*') }}</label>
                                         
                                         <div class="pb-3">
                                             <div style="position: relative; max-width: 100%; height: 200px; border: 1px solid #d3d3d3; overflow:hidden;">                                    
-                                                <img id="image_preview" src="https://cdn4.iconfinder.com/data/icons/iready-multimedia-vol-1/28/001_041_image_photo_painting_picture1x-512.png" style="position: absolute; max-width: 100%; height: auto;" onload="OnImageLoad(event);">
+                                                <img id="image_preview" src="/storage/{{ $post->image }}" style="position: absolute; max-width: 100%; height: auto;" onload="OnImageLoad(event);">
                                             </div>
                                         </div>
 
-                                        <label class="button" for="image" style="display: inline-block; padding: 5px 13px; cursor: pointer; border-radius: 4px; background-color: #8ebf42; color: #fff;">Upload Image</label>
+                                        <label class="button" for="image" style="display: inline-block; padding: 5px 13px; cursor: pointer; border-radius: 4px; background-color: #8ebf42; color: #fff;">Update Image</label>
                                         
-                                        <input id="image" type="file" class="form-control-file" name="image" style="position: absolute; z-index: -1; top: 10px; left: 8px; font-size: 17px; color: #b8b8b8;" required>
+                                        <input id="image" type="file" class="form-control-file" name="image" style="position: absolute; z-index: -1; top: 10px; left: 8px; font-size: 17px; color: #b8b8b8;">
 
                                         @error('image')
                                             <br>
@@ -105,24 +105,24 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Add New Portfolio') }}
+                                            {{ __('Update Portfolio') }}
                                         </button>
                                     </div>
                                 </div>
                             </form>
                             <div style="border-top:1px solid #d3d3d3;"></div>
-                            <div class="col-12 pt-3">                     
-                                <div class="pb-2" style="font-weight: bold;">Portfolio ({{ $user->posts->count() }})</div>  
+                            <div class="col-12 pt-3">
+                                <div class="d-flex" style="justify-content: space-between;">               
+                                    <div class="pb-2" style="font-weight: bold;">Portfolio ({{ $user->posts->count() }})</div>                            
+                                    <a href="/resume/{{ $user->id }}/portfolio/create">Add New Portfolio</a>
+                                </div>      
                                 @foreach($user->posts as $post)
                                     @if ($loop->first)
                                         <div class="d-flex" style="justify-content: space-between;">                                  
                                     @endif
                                     
                                     <div class="flex-column">
-                                        <div class="d-flex" style="justify-content: space-between;">
-                                            <div class="col-1"><a href="/resume/{{ $user->id }}/portfolio/{{ $post->id }}/update"><i class="fas fa-edit"></i></a></div>
-                                            <nav class="col-10 navbar-light" style="text-align: right;"><a class="navbar-selection-red" href="/resume/portfolio/{{ $post->id }}/delete"><i class="fas fa-trash-alt"></i></a></nav>
-                                        </div>
+                                        <nav class="col-12 navbar-light" style="text-align: right;"><a class="navbar-selection-red" href="/resume/portfolio/{{ $post->id }}/delete"><i class="fas fa-trash-alt"></i></a></nav>
                                         <div class="col-12">
                                             <img src="/storage/{{ $post->image }}" style="max-width: 100%; height: auto; border: 1px solid #d3d3d3;">
                                         </div>

@@ -3985,6 +3985,19 @@ input[type=button].btn-block {
   text-decoration: none;
 }
 
+.navbar-selection {
+  line-height: inherit;
+}
+.navbar-selection:hover, .navbar-selection:focus {
+  text-decoration: none;
+}
+.navbar-selection-red {
+  line-height: inherit;
+}
+.navbar-selection-red:hover, .navbar-selection-red:focus {
+  text-decoration: none;
+}
+
 .navbar-nav {
   display: flex;
   flex-direction: column;
@@ -4267,6 +4280,18 @@ input[type=button].btn-block {
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);
 }
+.navbar-light .navbar-selection {
+  color: rgba(0, 0, 0, 0.9);
+}
+.navbar-light .navbar-selection:hover, .navbar-light .navbar-selection:focus {
+  color: rgba(0, 0, 0, 0.9);
+}
+.navbar-light .navbar-selection-red {
+  color: rgba(255, 0, 0, 0.9);
+}
+.navbar-light .navbar-selection-red:hover, .navbar-light .navbar-selection-red:focus {
+  color: rgba(255, 0, 0, 0.9);
+}
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.5);
 }
@@ -4304,6 +4329,18 @@ input[type=button].btn-block {
 }
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
+}
+.navbar-dark .navbar-selection {
+  color: #fff;
+}
+.navbar-dark .navbar-selection:hover, .navbar-dark .navbar-selection:focus {
+  color: #fff;
+}
+.navbar-dark .navbar-selection-red {
+  color: rgb(255, 0, 0);
+}
+.navbar-dark .navbar-selection-red:hover, .navbar-dark .navbar-selection-red:focus {
+  color: rgb(255, 0, 0);
 }
 .navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.5);
