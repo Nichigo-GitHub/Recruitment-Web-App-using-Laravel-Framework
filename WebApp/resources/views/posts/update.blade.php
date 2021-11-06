@@ -10,7 +10,7 @@
                         <div class="card-header">
                             <a class="navbar-selection" href="/resume/{{ $user->id }}">
                                 <div class="d-flex">
-                                    <div class=" pt-2"><img src="https://lh3.googleusercontent.com/a-/AOh14Gg9J9Bs9rBOsUSGgZLCo2JImpmE1-6OC1zZXq7OKw=s576-p-rw-no" class="rounded-circle" style="height: 40px;"></div>
+                                    <div class=" pt-2"><img src="{{ $user->profile->profile_picture() }}" class="rounded-circle" style="height: 40px;"></div>
                                     <div class="flex-column" style="width: 200px;">
                                         <div class="pt-1 pl-3"><strong>
                                         @foreach(explode(' ', $user->name) as $letters)
@@ -45,7 +45,7 @@
                                 <a class="navbar-selection" href="/resume/portfolio/create">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-bars"></i>&nbsp; Additional Info</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/edit">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-user"></i>&nbsp; About me</div>
                                 </a>
                                 <a class="navbar-selection" href="/resume/{{ $user->id }}/portfolio/create">
@@ -55,7 +55,7 @@
                         </div>   
                     </nav>  
                 </div>
-                <div class="flex-column col-9 pl-5"> 
+                <div class="flex-column col-9 pl-5" style="width: 928px;"> 
                     <div class="card">
                         <div class="card-header"><strong>{{ __('Update Your Portfolio') }}</strong></div>
 
