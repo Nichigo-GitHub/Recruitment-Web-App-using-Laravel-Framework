@@ -31,10 +31,6 @@ Route::get('/resume/{user}', 'ProfilesController@index')->name('profile.show');
 
 Route::get('/resume/{user}/edit', 'ProfilesController@update')->middleware('auth');
 
-Route::post('/resume/{user}/edit/profile_picture', 'ProfilesController@update_profile_picture')->middleware('auth');
-
-Route::post('/resume/{user}/edit/update_identity', 'UsersController@update_identity')->middleware('auth');
-
 Route::post('/resume/portfolio', 'PostsController@store');
 
 Route::get('/resume/{user}/portfolio/create', 'PostsController@create')->middleware('auth');
