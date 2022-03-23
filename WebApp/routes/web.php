@@ -29,11 +29,27 @@ Route::view('/home/logged_in', 'home')->middleware('verified', 'twofactor', 'aut
 
 Route::get('/resume/{user}', 'ProfilesController@index')->name('profile.show');
 
+//--------------------------------------------------------------------------------------------------------------------
+
+Route::get('/resume/{user}/add_info', 'ProfilesController@additional')->middleware('auth');
+
+Route::post('/resume/{user}/edit/update_info', 'ProfilesController@update_info')->middleware('auth');
+
+//--------------------------------------------------------------------------------------------------------------------
+
+Route::get('/resume/{user}/languages', 'ProfilesController@languages')->middleware('auth');
+
+Route::post('/resume/{user}/edit/update_languages', 'ProfilesController@update_languages')->middleware('auth');
+
+//--------------------------------------------------------------------------------------------------------------------
+
 Route::get('/resume/{user}/edit', 'ProfilesController@update')->middleware('auth');
 
 Route::post('/resume/{user}/edit/profile_picture', 'ProfilesController@update_profile_picture')->middleware('auth');
 
 Route::post('/resume/{user}/edit/update_identity', 'UsersController@update_identity')->middleware('auth');
+
+//--------------------------------------------------------------------------------------------------------------------
 
 Route::post('/resume/portfolio', 'PostsController@store');
 

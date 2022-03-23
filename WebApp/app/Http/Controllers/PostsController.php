@@ -55,8 +55,8 @@ class PostsController extends Controller
 
         if(request('image') != NULL) {
             $image_to_replace = $post->image;
-            $image_replaced = Image::make(public_path("storage/{$image_to_replace}"));
-            $image_replaced->destroy();
+            $image_replaced = public_path("storage/{$image_to_replace}");
+            unlink($image_replaced);
 
             $image_path = request('image')->store('uploads', 'public');
             $image = Image::make(public_path("storage/{$image_path}"))->fit(1080, 810);
@@ -88,6 +88,10 @@ class PostsController extends Controller
     public function delete(\App\Models\Post $post)
     {
         DB::table('posts')->where('id', '=', $post->id)->delete();
+
+        $image_to_delete = $post->image;
+        $image_deleted = public_path("storage/{$image_to_delete}");
+        unlink($image_deleted);
 
         return redirect('/resume/'.auth()->user()->id."/portfolio/create");
     }

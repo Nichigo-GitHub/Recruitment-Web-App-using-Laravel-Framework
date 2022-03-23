@@ -30,19 +30,19 @@
                         </div>      
                         <div class="card-body">
                             <div class="flex-column">
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pb-2" style="font-weight: bold;"><i class="fas fa-briefcase"></i>&nbsp; Experience</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-graduation-cap"></i>&nbsp; Education</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-user-cog"></i>&nbsp; Skills</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/languages">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-language"></i>&nbsp; Languages</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/add_info">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-bars"></i>&nbsp; Additional Info</div>
                                 </a>
                                 <a class="navbar-selection" href="/resume/{{ $user->id }}/edit">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="flex-column col-9 pl-5" style="width: 928px;">   
                     <div class="card">  
-                        <div class="card-header"><strong>{{ __('Edit Profile About You') }}</strong></div>
+                        <div class="card-header"><strong>{{ __('Edit Your Profile About You') }}</strong></div>
 
                         <div class="card-body">                            
                             <div class="flex-column pb-3">                                
@@ -135,7 +135,7 @@
                                     <div class="col-md-6">
                                         <input id="contact_number" type="text" class="form-control @error('contact_number') is-invalid @enderror" name="contact_number" value="{{ $user->contact_number }}" autocomplete="contact_number" autofocus>
 
-                                        @error('namcontact_numbere')
+                                        @error('contact_number')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

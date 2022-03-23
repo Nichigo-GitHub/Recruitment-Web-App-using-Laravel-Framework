@@ -30,19 +30,19 @@
                         </div>      
                         <div class="card-body">
                             <div class="flex-column">
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pb-2" style="font-weight: bold;"><i class="fas fa-briefcase"></i>&nbsp; Experience</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-graduation-cap"></i>&nbsp; Education</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-user-cog"></i>&nbsp; Skills</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/languages">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-language"></i>&nbsp; Languages</div>
                                 </a>
-                                <a class="navbar-selection" href="/resume/portfolio/create">
+                                <a class="navbar-selection" href="/resume/{{ $user->id }}/add_info">
                                     <div class="pt-2 pb-2" style="font-weight: bold;"><i class="fas fa-bars"></i>&nbsp; Additional Info</div>
                                 </a>
                                 <a class="navbar-selection" href="/resume/{{ $user->id }}/edit">
